@@ -16,7 +16,7 @@ class BlockType(Enum):
 
 
 def markdown_to_blocks(md):
-    blocks = md.split( "\n")
+    blocks = md.split( "\n\n")
     filtered_blocks = []
 
     for block in blocks:
