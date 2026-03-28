@@ -1,5 +1,5 @@
+from contextlib import ContextDecorator
 from enum import Enum
-from typing import TextIO
 
 from src.htmlnode import ParentNode
 from src.inline_markdown import text_to_text_nodes
@@ -26,6 +26,14 @@ def markdown_to_blocks(md):
         block = block.strip()
         filtered_blocks.append(block)
     return filtered_blocks
+
+def markdown_to_html_node(md):
+    blocks = markdown_to_blocks(md)
+    children = []
+    for block in blocks:
+        html_node = block_to_html_node(block)
+        children.append(html_node)
+    return ParentNode("div", children, None)
 
 
 def block_to_block_type(block):
@@ -57,7 +65,6 @@ def block_to_block_type(block):
             if not line.startswith(f"{i}. "):
                 return BlockType.PARAGRAPH
             i += 1
-            print(line)
         return BlockType.OLIST
 
     return BlockType.PARAGRAPH
@@ -66,17 +73,17 @@ def block_to_block_type(block):
 def block_to_html_node(block):
     block_type = block_to_block_type(block)
     if block_type == BlockType.PARAGRAPH:
-        return block_to_html_node(block)
+        return paragraph_to_html_node(block)
     if block_type == BlockType.HEADING:
-        return block_to_html_node(block)
+        return heading_to_html_node(block)
     if block_type ==  BlockType.CODE:
-        return block_to_html_node(block)
+        return code_to_html_node(block)
     if block_type == BlockType.QUOTE:
-        return block_to_html_node(block)
+        return quote_to_html_node(block)
     if block_type == BlockType.OLIST:
-        return block_to_html_node(block)
+        return olist_to_html_node(block)
     if block_type == BlockType.ULIST:
-        return block_to_html_node(block)
+        return ulist_to_html_node(block)
     raise ValueError("invalid block type")
 
 
@@ -112,7 +119,7 @@ def code_to_html_node(block):
     if not block.startswith("```") or not ("```"):
         raise ValueError("invalid code block")
 
-    text = block[block]
+    text = block[4: -3]
     raw_text_node = TextNode(text, TextType.TEXT)
     child = text_node_to_html_node(raw_text_node)
     code = ParentNode("code", [child])
