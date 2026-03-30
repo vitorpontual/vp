@@ -14,8 +14,8 @@ class TestHTMLNode(unittest.TestCase):
 
 
     def test_value(self):
-        node = HTMLNode("p", "ok")
-        self.assertEqual(node.tag, "p")
+        node = HTMLNode("code", "ok")
+        self.assertEqual(node.tag, "code")
         self.assertEqual(node.value, "ok")
 
     def test_repr(self):
@@ -29,8 +29,8 @@ class TestHTMLNode(unittest.TestCase):
                     "HTMLNode(p, whats a strange world, children: None, {'class': 'primary', 'id': '#01'})"
                     ) 
     def test_leaf_to_html(self):
-        node = LeafNode("p", "Hello, world!")
-        self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
+        node = LeafNode("code", "Hello, world!")
+        self.assertEqual(node.to_html(), "<code>Hello, world!</code>")
 
     def test_leaf_link(self):
         node = LeafNode("a", "mundo da putaria", {"href": "https://mundodaputaria.com.br"})

@@ -1,6 +1,6 @@
 from enum import Enum
 
-from src.htmlnode import LeafNode
+from htmlnode import LeafNode
 
 class TextType(Enum): 
     TEXT = "text"
@@ -9,6 +9,7 @@ class TextType(Enum):
     CODE = "code"
     LINK = "link"
     IMAGE = "image"
+    CAPTION = "image_caption"
 
 class TextNode:
     def __init__(self, text, text_type, url=None):
@@ -37,8 +38,11 @@ def text_node_to_html_node(text_node):
     if text_node.text_type == TextType.CODE:
         return LeafNode("code", text_node.text)
     if text_node.text_type == TextType.IMAGE:
-        return LeafNode("img", "", {"src": text_node.url, "alt": text_node.text})
+        return LeafNode("img", "", {"class": "image-box","src": text_node.url, "alt": text_node.text})
+    if text_node.text_type == TextType.CAPTION:
+        return LeafNode("div",text_node.text, {"class": "image-caption"})
     if text_node.text_type == TextType.LINK:
-        return LeafNode("a", text_node, {"href": text_node.url})
+        return LeafNode("a", text_node.text, {"href": text_node.url})
     raise ValueError(f"invalid text type: {text_node.text_type}")
+
 

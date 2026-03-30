@@ -1,9 +1,9 @@
 import os 
 
 def copy_files(src_path, dest_path):
-    with open(src_path, "rb", encoding="utf-8") as f:
+    with open(src_path, "rb") as f:
         content = f.read()
-        with open(dest_path, "wb", encoding="utf-8") as dest_f: 
+        with open(dest_path, "wb") as dest_f: 
             dest_f.write(content)
         print(f"Copy: {src_path} -> {dest_path}")
 

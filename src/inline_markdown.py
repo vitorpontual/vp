@@ -1,11 +1,11 @@
 import re
 
-from src.textnode import TextNode, TextType
+from textnode import TextNode, TextType
 
 def text_to_text_nodes(text):
     nodes = [TextNode(text, TextType.TEXT)]
     nodes = split_nodes_delimiter(nodes, "**", TextType.BOLD)
-    nodes = split_nodes_delimiter(nodes, "_", TextType.ITALIC)
+    nodes = split_nodes_delimiter(nodes, "__", TextType.ITALIC)
     nodes = split_nodes_delimiter(nodes, "`", TextType.CODE)
     nodes = split_node_image(nodes)
     nodes = split_node_link(nodes)
@@ -22,7 +22,9 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
         split_nodes = []
         sections = old_node.text.split(delimiter)
 
+
         if len(sections) % 2 == 0: 
+            print(sections)
             raise ValueError("invalid markdown, formatted section not closed")
 
         for i in range(len(sections)):
@@ -33,6 +35,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             else:
                 split_nodes.append(TextNode(sections[i], text_type))
         new_nodes.extend(split_nodes)
+        
     return new_nodes
 
 
