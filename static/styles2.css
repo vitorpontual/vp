@@ -168,6 +168,14 @@ section img {
     
     /* styles.css - Novos estilos para o blog */
 
+p code {
+    background: #071E22 !important;
+    color: red;
+    font-family: monospace;
+    padding-left: 2px;
+    padding-right: 2px;
 
+
+}
 
 
