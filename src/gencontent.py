@@ -213,23 +213,13 @@ def generate_year_page_content(posts, year, basepath):
     
     content = f'''
     <section class="year-hero">
-        <h1>Arquivo: {year}</h1>
-        <p>{len(posts)} post{"s" if len(posts) != 1 else ""} publicados em {year}</p>
-        <a href="{basepath}archive.html" class="back-to-archive">
-             Voltar para o arquivo completo
-        </a>
+        <h1>{year}</h1>
     </section>
     
     <div class="year-posts-list">
         {posts_html}
     </div>
-    
-    <div class="year-footer">
-        <a href="{basepath}" class="back-to-home">
-             Voltar para o início
-        </a>
-    </div>
-    '''
+      '''
     
     return content
 

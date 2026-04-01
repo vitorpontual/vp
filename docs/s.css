@@ -1,0 +1,412 @@
+/* Seu CSS original com responsividade adicionada */
+
+a {
+  color: #E84855;
+  text-decoration: none; 
+}
+
+a:hover {
+    color: #142850;
+}
+
+h1 {
+  font-weight: 300; 
+}
+
+h2 {
+  font-weight: 300; 
+}
+
+aside {
+  font-family: "Didot", serif; 
+}
+
+body {
+  color: #222;
+  font-family: "Didot", serif;
+  font-size: 22px; 
+}
+
+p code, ul code, blockquote code {
+    background: #292927 !important;
+    color: #EB5757;
+    font-size: 85%;
+    font-family: monospace;
+    padding: 0.2em 0.4em;
+    bottom: 0.065em;
+    position: relative;
+}
+
+blockquote {
+  background-color: #2e2c35;
+  border-left: 4px solid #8d99ae;
+  padding-left: 2em;
+  margin-left: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+  color: #ddd;
+  font-style: italic;
+}
+
+.text {
+  font-family: "Didot", serif;
+  color: #444;
+  line-height: 2em; 
+}
+
+nav {
+  padding: 1em 0;
+  color: #444;
+  border-bottom: 1px solid #999;
+  margin-bottom: 1em; 
+}
+  
+nav a {
+    font-family: "Didot", serif;
+    font-size: 95%;
+    color: #000; 
+}
+  
+nav .contact {
+    float: right; 
+}
+    
+nav .contact img {
+      width: 1em;
+      height: 1em; 
+}
+    
+nav .contact span {
+      margin: 2px; 
+}
+
+.i {
+    font-size: 20px;
+    transition: transform 0.2s;
+    width: auto;   
+    height: auto;
+}
+
+.i:hover {
+    color: #007bff;
+    transform: scale(1.8);
+}
+
+#layout {
+  position: relative;
+  left: 0;
+  padding-left: 0; 
+}
+
+.content {
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: 800px;
+  margin-bottom: 50px;
+  line-height: 1.8em; 
+}
+  
+.content h1 {
+    text-align: center; 
+}
+  
+.content .footer {
+    margin: 20px 0;
+    color: #444;
+    font-size: 90%;
+    text-align: center; 
+    border-top: 1px solid #999;
+}
+
+.header {
+  margin: 0;
+  color: #333;
+  text-align: center;
+  padding: 2.5em 2em 0; 
+}
+  
+.header h1 {
+    margin: 0.2em 0;
+    font-weight: 300;
+    font-size: 300%; 
+}
+  
+.header a {
+    color: #000; 
+}
+
+.posts {
+  padding: 1.5em 0; 
+}
+  
+.posts-list .post-tags {
+    display: inline-block;
+    margin: 10px 0; 
+}
+  
+.posts-list .post h2 a {
+    font-family: "Didot", serif;
+    color: #444;
+    font-weight: 300; 
+}
+  
+.posts-list .post-index aside {
+    color: #999; 
+}
+  
+.posts-list .read-more {
+    font-size: 90%; 
+}
+  
+.posts-list .tags {
+    font-family: "Didot", serif;
+    color: #999; 
+}
+  
+.posts-list .post-meta {
+    color: gray;
+    font-size: 90%; 
+}
+
+.posted-date { 
+    color: gray;
+    text-align: left;
+    font-size: 90%;
+}
+
+.post-meta { 
+    color: gray;
+    text-align: left;
+    font-size: 80%;
+}
+
+.post-show h1 {
+  text-align: center;
+  color: #444;
+  font-weight: 300; 
+}
+  
+.post-show aside {
+  font-style: italic;
+  color: #999; 
+}
+  
+.post-show .post-footer {
+  padding: 40px 0; 
+}
+
+article img {
+  width: 100%; 
+}
+
+section img { 
+  object-fit: cover;
+  width: 100%;
+  height: 300px;
+  object-position: center;
+}
+
+.button-xsmall {
+  font-size: 70%; 
+}
+
+.image-box {
+  text-align: center; 
+}
+  
+.image-box .image-caption {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    font-size: 70%; 
+}
+
+.highlight {
+  padding: 0 10px;
+  font-size: 80%; 
+}
+
+/* ============================================
+   RESPONSIVIDADE - MANTENDO SEU ESTILO
+   ============================================ */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  body {
+    font-size: 19px;
+  }
+  
+  .content {
+    max-width: 90%;
+    padding: 0 1.5em;
+  }
+  
+  .header {
+    padding: 2em 1em 0;
+  }
+  
+  .header h1 {
+    font-size: 250%;
+  }
+  
+  h1 {
+    font-size: 2.2em;
+  }
+  
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+/* Mobile (até 768px) */
+@media (max-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+  
+  .content {
+    padding: 0 1em;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .header {
+    padding: 1.5em 1em 0;
+  }
+  
+  .header h1 {
+    font-size: 200%;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  /* Navegação responsiva */
+  nav {
+    text-align: center;
+    padding: 0.8em 0;
+  }
+  
+  nav .contact {
+    float: none;
+    display: inline-block;
+    margin-top: 0.5em;
+  }
+  
+  nav a {
+    display: inline-block;
+    margin: 0 0.5em;
+  }
+  
+  /* Posts */
+  .posts-list .post-meta {
+    font-size: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  
+  .posts-list .post h2 a {
+    font-size: 1.3em;
+  }
+  
+  .posts-list .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  
+  /* Código */
+  pre, code {
+    font-size: 0.9em;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+  
+  /* Imagens */
+  section img {
+    height: 200px;
+  }
+  
+  /* Footer */
+  .content .footer {
+    font-size: 85%;
+    margin: 15px 0;
+  }
+  
+  /* Metadados */
+  .posted-date, .post-meta {
+    font-size: 85%;
+  }
+  
+  /* Botões */
+  .button-xsmall {
+    font-size: 65%;
+  }
+}
+
+/* Mobile pequeno (até 480px) */
+@media (max-width: 480px) {
+  body {
+    font-size: 16px;
+  }
+  
+  .header h1 {
+    font-size: 180%;
+  }
+  
+  h1 {
+    font-size: 1.6em;
+  }
+  
+  h2 {
+    font-size: 1.3em;
+  }
+  
+  .content {
+    padding: 0 0.8em;
+  }
+  
+  nav a {
+    font-size: 90%;
+    margin: 0 0.3em;
+  }
+  
+  .posts-list .post h2 a {
+    font-size: 1.2em;
+  }
+  
+  .posts-list .post-meta {
+    flex-direction: column;
+    gap: 0.2em;
+  }
+  
+  section img {
+    height: 150px;
+  }
+  
+  .i {
+    font-size: 18px;
+  }
+  
+  .button-xsmall {
+    font-size: 60%;
+  }
+}
+
+/* Telas grandes (acima de 1400px) - mantém o limite máximo */
+@media (min-width: 1400px) {
+  .content {
+    max-width: 900px;
+  }
+  
+  body {
+    font-size: 22px;
+  }
+}

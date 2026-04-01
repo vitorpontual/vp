@@ -2,6 +2,10 @@
 
 date: Posted: Mar 30, 2026
 
+<div> <span style="display: none">
+published: 2026-03-30
+</span> </div>
+
 ```python
 def sum(a, b):
 	return a + b
@@ -31,7 +35,7 @@ O que eu tirei de aprendizado com a construção desse SSG ( Static Site Generat
 
 - Parse de markdwon par HTML;
 - Identificação de diferentes tipos de blocos ( heading, code, quote, list);
-- Processamento de inline ( **bold**, __italic__, `code`, "![]()", "[]()");
+- Processamento de inline ( **bold**, __italic__, `code`, "![] ()", "[] ()");
 - Extração de metadados (títulos, data, tags);
 
 2. Sistema de Blocs;

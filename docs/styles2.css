@@ -1,6 +1,11 @@
 a {
-  color: #a28089;
-  text-decoration: none; }
+  color: #E84855;
+  text-decoration: none; 
+ }
+
+a:hover {
+    color: #142850;
+}
 
 h1 {
   font-weight: 300; }
@@ -15,6 +20,22 @@ body {
   color: #222;
   font-family: "Didot", serif;
   font-size: 22px; }
+
+p code, ul code {
+    background: #071E22 !important;
+    color: red;
+    font-family: monospace;
+    padding-left: 2px;
+    padding-right: 2px;
+
+
+}
+
+
+
+.hide {
+    display: none
+}
 
 .text {
   font-family: "Didot", serif;
@@ -167,15 +188,5 @@ section img {
     font-size: 120%; } 
     
     /* styles.css - Novos estilos para o blog */
-
-p code {
-    background: #071E22 !important;
-    color: red;
-    font-family: monospace;
-    padding-left: 2px;
-    padding-right: 2px;
-
-
-}
 
 

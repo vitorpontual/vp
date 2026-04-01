@@ -3,14 +3,54 @@ import re
 from datetime import datetime
 
 class Post:
-    def __init__(self, title, date, content, slug, path):
+    def __init__(self, title, date, content, slug, path, tags=None, published_date=None):
         self.title = title
-        self.date = date
+        # Garante que date é um objeto datetime
+        if isinstance(date, str):
+            try:
+                self.date = datetime.strptime(date, "%Y-%m-%d")
+            except:
+                self.date = datetime.now()
+        else:
+            self.date = date
+            
         self.content = content
         self.slug = slug
         self.path = path
+        self.tags = tags if tags else []
+        
+        # Data de publicação (usa a mesma data se não especificada)
+        if published_date:
+            if isinstance(published_date, str):
+                try:
+                    self.published_date = datetime.strptime(published_date, "%Y-%m-%d")
+                except:
+                    self.published_date = self.date
+            else:
+                self.published_date = published_date
+        else:
+            self.published_date = self.date
+        
         self.reading_time = self.calculate_reading_time()
         self.preview = self.generate_preview()
+    
+    def get_formatted_date(self):
+        """Retorna a data formatada (fixa)"""
+        meses = {
+            1: "Janeiro", 2: "Fevereiro", 3: "Março", 4: "Abril",
+            5: "Maio", 6: "Junho", 7: "Julho", 8: "Agosto",
+            9: "Setembro", 10: "Outubro", 11: "Novembro", 12: "Dezembro"
+        }
+        # Usa published_date em vez de date para consistência
+        return f"{self.published_date.day} de {meses[self.published_date.month]}, {self.published_date.year}"
+    
+    def get_formatted_date_short(self):
+        """Retorna a data no formato curto (DD/MM/YYYY)"""
+        return self.published_date.strftime("%d/%m/%Y")
+    
+    def get_year(self):
+        """Retorna o ano do post"""
+        return self.published_date.year
     
     def calculate_reading_time(self):
         """Calcula o tempo estimado de leitura (200 palavras por minuto)"""
@@ -125,25 +165,15 @@ class Post:
     
         return text 
     
-    def get_formatted_date(self):
-        """Retorna a data formatada (ex: 15 de Janeiro, 2024)"""
-        # Mapeamento de meses para português
-        meses = {
-            1: "Janeiro", 2: "Fevereiro", 3: "Março", 4: "Abril",
-            5: "Maio", 6: "Junho", 7: "Julho", 8: "Agosto",
-            9: "Setembro", 10: "Outubro", 11: "Novembro", 12: "Dezembro"
-        }
-        return f"{self.date.day} de {meses[self.date.month]}, {self.date.year}"
-    
-    def get_year(self):
-        """Retorna o ano do post"""
-        return self.date.year  # CORRIGIDO: year, não years
+ 
 
 def extract_title_and_date(content):
-    """Extrai título e data do conteúdo markdown"""
+    """Extrai título, data e tags do conteúdo markdown"""
     lines = content.split('\n')
     title = ""
     date = None
+    tags = []
+    published_date = None
     
     for line in lines:
         if line.startswith('# '):
@@ -154,63 +184,76 @@ def extract_title_and_date(content):
                 date = datetime.strptime(date_str, "%Y-%m-%d")
             except:
                 pass
+        elif line.startswith('published: '):
+            try:
+                published_str = line[10:].strip()
+                published_date = datetime.strptime(published_str, "%Y-%m-%d")
+            except:
+                pass
+        elif line.startswith('tags: '):
+            tags_str = line[6:].strip()
+            tags = [tag.strip().lower() for tag in tags_str.split(',')]
     
     # Se não encontrou título, usa "Untitled"
     if not title:
         title = "Untitled"
     
-    # Se não encontrou data, usa a data atual
+    # Se não encontrou data, usa None (será tratado depois)
     if not date:
-        date = datetime.now()
+        date = None
     
-    return title, date
+    # Se não encontrou data de publicação, usa a data de criação
+    if not published_date:
+        published_date = date
+    
+    return title, date, published_date, tags
 
 def load_posts(content_dir, blog_dir="blog"):
     """Carrega apenas os posts do diretório blog"""
-    print(f"\n[DEBUG] ===== load_posts =====")
-    print(f"[DEBUG] content_dir: {content_dir}")
-    print(f"[DEBUG] blog_dir: {blog_dir}")
-    
-    # Caminho completo para o blog
+    posts = []
     blog_path = os.path.join(content_dir, blog_dir)
-    print(f"[DEBUG] blog_path: {blog_path}")
-    print(f"[DEBUG] blog_path exists: {os.path.exists(blog_path)}")
     
     if not os.path.exists(blog_path):
-        print(f"[DEBUG] Blog directory not found, returning empty list")
-        return []
-    
-    # Lista todos os arquivos .md na pasta blog
-    print(f"[DEBUG] Walking through: {blog_path}")
-    posts = []
+        print(f"[WARNING] Blog directory not found: {blog_path}")
+        return posts
     
     for root, dirs, files in os.walk(blog_path):
-        print(f"[DEBUG] In directory: {root}")
-        print(f"[DEBUG] Files found: {files}")
-        
         for file in files:
             if file.endswith('.md'):
                 file_path = os.path.join(root, file)
-                print(f"[DEBUG] Found MD file: {file_path}")
-                
                 try:
                     with open(file_path, 'r', encoding='utf-8') as f:
                         content = f.read()
                     
-                    title, date = extract_title_and_date(content)
+                    # Extrai título, data e tags
+                    title, date, published_date, tags = extract_title_and_date(content)
+                    
+                    # Se não tem data, usa a data de modificação do arquivo
+                    if not date:
+                        # Pega a data de modificação do arquivo
+                        stat = os.stat(file_path)
+                        date = datetime.fromtimestamp(stat.st_mtime)
+                    
+                    if not published_date:
+                        published_date = date
+                    
+                    # Cria slug
                     slug = title.lower().replace(' ', '-').replace('?', '').replace('!', '').replace(',', '')
                     
+                    # Caminho relativo
                     rel_path = os.path.relpath(file_path, blog_path)
                     path = os.path.join(blog_dir, rel_path.replace('.md', '.html'))
                     
-                    print(f"[DEBUG] Adding post: {title} -> {path}")
-                    posts.append(Post(title, date, content, slug, path))
+                    # Cria o post
+                    posts.append(Post(title, date, content, slug, path, tags, published_date))
                     
                 except Exception as e:
-                    print(f"[ERROR] Error loading {file_path}: {e}")
+                    print(f"Error loading {file_path}: {e}")
     
-    print(f"[DEBUG] Total posts loaded: {len(posts)}")
+    # Ordena por data de publicação (mais recente primeiro)
+    posts.sort(key=lambda x: x.published_date, reverse=True)
     return posts
+
 
 def group_posts_by_year(posts):
     """Agrupa posts por ano"""
