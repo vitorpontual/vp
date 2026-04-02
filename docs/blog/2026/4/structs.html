@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Structs</title>
+        <link href="/s.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link href="/prism.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
+
+    </head>
+    <body>
+        <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="/index.html">VP Developer</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="/index.html">Home</a> ·
+            <a href="/archive.html">Archive</a> · 
+            <a href="/about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/vitorpontual" download="">
+                  <img class="i" src="/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/vitor-pontual/">
+                <img class="i" src="/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+            <div><h1>Structs</h1><div class="posted-date">
+    <div class="posted-date-block">
+        <time datetime="Posted: Apr 1, 2026">
+           <i> Posted: Apr 1, 2026</i>
+        </time>
+    </div>
+    </div><p><div> <span style="display: none"> published: 2026-04-01 </span> </div></p><p>AS <b>Structs</b> são a solução do <b>C</b> para organizar dados complexos, resolvendo dois grandes problemas que você encontraria ao usar apenas tipos simples</p><ul><li><b>Código Limpo:</b> Imagine passar seis argumentos (<code>x1, y1, z1, x2, y2, z2</code>) para uma função de distância. Fica confuso! Com uma struct, você agrupoa esses dados em um único "pacote".</li><li><b>Retorno Múltiplo:</b> No C, uma função só pode retornar <b>um único valor</b>. Se você precisar que uma função retorn coordernadas X, Y e Z ao mesmo tempo, você as coloca dentor de uma struct e retorna a struct inteira.</li><li><b>Sintaxe Básica:</b> Você define um novo tipo personaliado que pode conter diferentes tipos de dados:</li></ul><pre data-language="C"><code class="language-c">struct Human {
+	int age;
+	char *name;
+	int is_alive;
+}</code></pre><p>As structs são o primeiro passo para criar estruturas de dados poderosas!</p><h3>Inicializar e acessar Structs em C</h3><ul><li><b>Formas de Inicialização:</b></li></ul><pre data-language="C"><code class="language-c">struct City{
+ char *name;
+ int lat;
+ int lon;
+}</code></pre><ol><li><b>Zero Initializer{0}:</b> Define todos os campos da struct como zero.</li></ol><pre data-language="C"><code class="language-c">int main() {
+	struct City c = {0};
+}</code></pre><p>2. <b>Positional Initializer:</b> Os valores são passados na ordem exata em que foram declarados na definição da struct.</p><pre data-language="C"><code class="language-c">int main() {
+	struct City c = {"San Francisco, 37, -122};
+}</code></pre><p>3. <b>Designated Initializer (Recomendado):</b> Você associa o valor diretamente ao nome do campo usando um ponto (ex. <code>.name = SF</code>). É a forma mais legível e segura, pois não quebra se a ordem dos campos mudar.</p><pre data-language="C"><code class="language-c">int main() {
+	struct City c = {
+		.name = "San Francisco",
+		.lat = 37,
+		.lon = -122
+	};
+}</code></pre><ul><li><b>Acesso a Campos:</b> Para ler ou modificar um valor, usamos o operador <code>.</code> (ex. <code>c.lat = 41</code>).</li></ul><pre data-language="C"><code class="language-c">struct City c;
+c.lat = 41; // Set the latitude
+printf("Latitude: %d, c.lat); // Print the latitude</code></pre><h3>Dica</h3><p>Uma forma facil de inicializar o retorno a struct.</p><pre data-language="C"><code class="language-c">struct city new_city(char *name, int lat, int lon) {
+	return (struct City){.name = name, .lat = lat, .lon = lon};
+}</code></pre><h3>Uso de Typedef em C</h3><ul><li><b>Simplifição:</b> O <code>typedef</code> serve para criar "apelidos" para os tipos de dados. Isso evita que você tenha que digitar <code>struct NomeDaStruct</code> toda vez que for declara uma váriavel.</li><li><b>Sintaxe:</b> Ao definir a struct com <code>typedef</code>, você escolhe um nome curto ao final (ex. <code>pastry_t</code>). Agora, você pode usar apenas <code>pastry_t</code> como se fosse um tipo nativo (como <code>int</code> ou <code>float</code>).</li><li><b>Conversão:</b> O sufixo <code>_t</code> é uma prática comum na comunidade C para indicar que aquela nome se refere a um tipo.</li><li><b>Flexibildade:</b> Você pode até criar structs anônimas (sem nome oficial) se usar o <code>typedef</code> para dar o apelido diretamente.</li></ul><p>Com isso, seu códgio fica muito mais limpo e legível!</p><h3>Como o C gerencia o tamanho e a memória de structs</h3><ul><li><b>`sizeof` em Structs:</b> Funciona exatamente como nos tipos básicos, permitindo descobrir o tamanho total em bytes de uma struct personalizada.</li><li><b>Layout de Memória:</b> Os campos são armazenados de forma contígua (um após o outro). Se você tem três <code>int</code> de 4 bytes, a struct terá pelomenos 12 bytes.</li></ul><p><img class="image-box" src="/images/cstruct.png" alt="coordinate struct"></img></p><ul><li><b>Padding:</b> O C insere espaços "vazios" entre campso de tipos diferenetes para garantir o <b>alinhamento de memória</b>. Isso ocorre porque as CPUs processam dados de forma mais eficiente quando eles estão organizados em blocos específicos (ex. de 4 em 4 bytes).</li><li><b>Variabildiade:</b> O Layout exato e a quantidade de padding dependem do compilador e da arquitetura do sistema.</li></ul><p><img class="image-box" src="/images/hstruct.png" alt="human struct"></img></p><p>É fascinante ver como o C expõe oesses detalhes de performance que outras linguagens escondem!</p><h3>Struct Padding</h3><ul><li><b>Controle Total:</b> O fato de podermos influenciar o layout da memória é uma das maiores vantagens do C para quem busca performance.</li><li><b>A Ordem Importa:</b> O tamanho total de uma struct pode mudar drasticamente dependendo de como você organiza os campos.</li><li><b>Dica de perfomance:</b> Para minimizar o "padding" (os espaços vazios que o compilador insere para alinhar dados), a regra geral é listar os campos do <b>maior para o menor</b> (ex: comece com <code>double</code> ou <code>long</code> e termine com <code>char</code>).</li></ul><p>É impressionante como uma simples mudança na ordem das linahs de código pode tornar seu programa muito mais eficiente em termos de mémoria.</p><pre data-language="C"><code class="language-c">typedef struct {
+  char* a; // 4 bytes
+  double b; // 8 bytes
+  short c; // 2 bytes
+  char d; // 4 byes bytes
+  long e; // 4 bytes
+  void f; // 0 bytes
+} poorly_aligned_t;
+=======================
+typedef struct {
+  double b; 
+  long e; 
+  char* a;
+  char d;
+  short c;
+  void f;
+} better_t;</code></pre></div>
+            <script src="/prism.js"></script>
+            <footer class="footer final">2026 Vitor Pontual - Powered by
+                <a href="/">VP Blog Builder</a>
+            </footer>
+    </div>
+
+
+    </body>
+</html>

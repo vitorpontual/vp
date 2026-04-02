@@ -49,6 +49,7 @@ blockquote {
   font-style: italic;
 }
 
+
 .text {
   font-family: "Didot", serif;
   color: #444;
@@ -91,6 +92,12 @@ nav .contact span {
 .i:hover {
     color: #007bff;
     transform: scale(1.8);
+}
+
+img {
+  text-align: center; 
+  width: 100%;
+  height: auto;
 }
 
 #layout {
@@ -196,10 +203,6 @@ nav .contact span {
   padding: 40px 0; 
 }
 
-article img {
-  width: 100%; 
-}
-
 section img { 
   object-fit: cover;
   width: 100%;
@@ -211,9 +214,7 @@ section img {
   font-size: 70%; 
 }
 
-.image-box {
-  text-align: center; 
-}
+
   
 .image-box .image-caption {
     color: #999;
