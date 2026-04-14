@@ -84,7 +84,7 @@ typedef struct {
 } ponto_t;
 int main() {
 	ponto_t p1 {10, 20};
-	ponto_t *ptr = $p1;
+	ponto_t *ptr = &amp;p1;
 	// Usando a seta para ler e modificar
 	printf("X inicial: %d\n", ptr-&gt;x);
 	ptr-&gt;x = 100; 
