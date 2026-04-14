@@ -4,3 +4,8 @@ static/
 content/
 src/
 *.sh
+
+template.md
+template.html
+test_direct.py
+

@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Aprendendo Linguagem C</title>
-        <link href="/s.css" rel="stylesheet" />
+        <link href="/vp_developer_blog/s.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link href="/prism.css" rel="stylesheet" />
+        <link href="/vp_developer_blog/prism.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
 
@@ -15,7 +15,7 @@
         <div id="layout">
       <div class="header">
         <h1>
-          <a href="/index.html">VP Developer</a>
+          <a href="/vp_developer_blog/index.html">VP Developer</a>
         </h1>
       </div>
 
@@ -23,21 +23,21 @@
       <div class="content">
         <nav class="pure-g">
           <div class="pure-u-2-3 links">
-            <a href="/index.html">Home</a> ·
-            <a href="/archive.html">Archive</a> · 
-            <a href="/about.html">About</a>
+            <a href="/vp_developer_blog/index.html">Home</a> ·
+            <a href="/vp_developer_blog/archive.html">Archive</a> · 
+            <a href="/vp_developer_blog/about.html">About</a>
           </div>
 
           <div class="pure-u-1-3">
             <div class="contact">
               <span>
                 <a href="https://github.com/vitorpontual" download="">
-                  <img class="i" src="/icons/github.svg" alt="Github icon">
+                  <img class="i" src="/vp_developer_blog/icons/github.svg" alt="Github icon">
                   </a>
               </span>
               <span>
                 <a href="https://www.linkedin.com/in/vitor-pontual/">
-                <img class="i" src="/icons/linkedin.svg" alt="LinkedIn icon">
+                <img class="i" src="/vp_developer_blog/icons/linkedin.svg" alt="LinkedIn icon">
                 </a>
               </span>
             </div>
@@ -78,9 +78,9 @@ int main() {
 	}
 	return 0;
 }</code></pre><h3>Loop Do While</h3><ul><li><b>Execução Garantida:</b> A grande diferença para o <code>while</code> comum é que o <code>do while</code> executa o código <b>pelo menos uma vez</b>, pois a condição só é verificada ao final do bloco.</li><li><b>Sintaxe:</b> <code>do { ... } while (condição);</code>, em códgico normal, o ponto e vírgula após o <code>while</code> é obrigatório.</li><li><b>Uso em Macros:</b> É uma técnica cássica em <b>C</b> para criar macros segurs, permitindo que um bloco de código seja tratado como uma única instrução "vazar" variáveis o resto do programa.</li><li><b>Comportamento:</b> Se você iniciar uma variável em 100 e a condição for <code>i < 5</code>, o loop ainda assim imprimirá o valor 100 uma vez antes de para.</li></ul><h3>Pragma Once e Header Guards</h3><ul><li><b>O Problema:</b> Incluir o mesmo arquivo <code>.h</code> várias vezes gera erros de redifinição de funções ou estruturas, o que trava a compilação.</li><li><b>Pragma Once:</b> É a solução moderna e mais simples. Basta uma linha no topo do arquivo para garantir que o compilador o processe apenas uma vez.</li><li><b>Header Guards:</b> A técnica tradicional que usa <code>#ifndef</code>, <code>#define</code> e <code>#endif</code>. Ele cria uma "trava" manual baeada em macros para evitar duplicidade.</li><li><b>Conclusão:</b> Embora ambos funcionnem, o <code>#pragma once</code>é mais rápido e menos propenso a erros humanos.</li></ul><h2>Conclusão</h2><p>Concluímos os fundamentos <b>C</b>, passamos pela estrutura básica (<code>main</code>), a tipagem rígida e a natureza das strings como arrays qude caracteres (<code>char*</code>). Vimos como o <b>C</b>, por ser uma linguagem <b>compilada</b>, exige precisão absoluta antes mesmo da execução. Exploramos a lógica com operadores, anatomia das funções com <code>void</code> e o controle de repetição com loops (<code>for</code>, <code>while</code> e o <code>do while</code>). Por fim, entendemos como proteger nossos arquivos de cabeçalho com <code>#pragma once</code>. Comparado ao <b>Python</b>, o <b>C</b> oferece um controle "próximo ao metal" muito maior, mas exige que você gerencie cada detalhe manualmente.</p><p></p></div>
-            <script src="/prism.js"></script>
+            <script src="/vp_developer_blog/prism.js"></script>
             <footer class="footer final">2026 Vitor Pontual - Powered by
-                <a href="/">VP Blog Builder</a>
+                <a href="/vp_developer_blog/">VP Blog Builder</a>
             </footer>
     </div>
 
