@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Memory</title>
-        <link href="/vp_developer_blog/s.css" rel="stylesheet" />
+        <link href="/vp/s.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link href="/vp_developer_blog/prism.css" rel="stylesheet" />
+        <link href="/vp/prism.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
 
@@ -15,7 +15,7 @@
         <div id="layout">
       <div class="header">
         <h1>
-          <a href="/vp_developer_blog/index.html">VP Developer</a>
+          <a href="/vp/index.html">VP Developer</a>
         </h1>
       </div>
 
@@ -23,21 +23,21 @@
       <div class="content">
         <nav class="pure-g">
           <div class="pure-u-2-3 links">
-            <a href="/vp_developer_blog/index.html">Home</a> ·
-            <a href="/vp_developer_blog/archive.html">Archive</a> · 
-            <a href="/vp_developer_blog/about.html">About</a>
+            <a href="/vp/index.html">Home</a> ·
+            <a href="/vp/archive.html">Archive</a> · 
+            <a href="/vp/about.html">About</a>
           </div>
 
           <div class="pure-u-1-3">
             <div class="contact">
               <span>
                 <a href="https://github.com/vitorpontual" download="">
-                  <img class="i" src="/vp_developer_blog/icons/github.svg" alt="Github icon">
+                  <img class="i" src="/vp/icons/github.svg" alt="Github icon">
                   </a>
               </span>
               <span>
                 <a href="https://www.linkedin.com/in/vitor-pontual/">
-                <img class="i" src="/vp_developer_blog/icons/linkedin.svg" alt="LinkedIn icon">
+                <img class="i" src="/vp/icons/linkedin.svg" alt="LinkedIn icon">
                 </a>
               </span>
             </div>
@@ -49,14 +49,14 @@
            <i> Posted: Apr 08, 2026</i>
         </time>
     </div>
-    </div><p><div> <span style="display: none"> published: 2026-04-08 </span> </div></p><h2>O que é memória?</h2><p>Imagine a memoria como um gigante <b>array de bytes</b>. Cada "gaveta" dessa array tem um índice, que chamamos de endereço (<i>address</i>, em inglês).</p><p><img class="image-box" src="/vp_developer_blog/images/memory.png" alt="Memory"></img></p><blockquote>Variáveis: São apenas nomes légiveis que apontam para um desses endereços. Em vez de decorar o  endereço <code>0xfff8</code> você usa o nome <code>age</code>.</blockquote><ul><li><b>Operador</b> <code>&</code> <b>(Address-of):</b> Esse operador permite que você pergunta ao C: "Em qul gaveta da memória esta variavél está guardada?"</li><li><b>Exibição(</b><code>%p</code><b>):</b> Usamos o especificador <code>%p</code> no <code>printf</code> para exibir esse endereço, geralmente em formato <i>hexadecimal</i>.</li></ul><p>Isso é base para os famosos <b>pointers</b></p><h3>Exemplo de código</h3><pre data-language="C"><code class="language-c">#include &lt;stdio.h&gt;
+    </div><p><div> <span style="display: none"> published: 2026-04-08 </span> </div></p><h2>O que é memória?</h2><p>Imagine a memoria como um gigante <b>array de bytes</b>. Cada "gaveta" dessa array tem um índice, que chamamos de endereço (<i>address</i>, em inglês).</p><p><img class="image-box" src="/vp/images/memory.png" alt="Memory"></img></p><blockquote>Variáveis: São apenas nomes légiveis que apontam para um desses endereços. Em vez de decorar o  endereço <code>0xfff8</code> você usa o nome <code>age</code>.</blockquote><ul><li><b>Operador</b> <code>&</code> <b>(Address-of):</b> Esse operador permite que você pergunta ao C: "Em qul gaveta da memória esta variavél está guardada?"</li><li><b>Exibição(</b><code>%p</code><b>):</b> Usamos o especificador <code>%p</code> no <code>printf</code> para exibir esse endereço, geralmente em formato <i>hexadecimal</i>.</li></ul><p>Isso é base para os famosos <b>pointers</b></p><h3>Exemplo de código</h3><pre data-language="C"><code class="language-c">#include &lt;stdio.h&gt;
 int main(){
 	float temperature = 36.5;
 	//Imprime o valor e o endereço exato na memória
 	printf("Valor da variável: %.1f\n", temperature);
 	printf("Endereço de memória (índice array): %p\n", (void*)&amp;temperature);
 	return 0
-}</code></pre><h3>O que é endereço?</h3><p>Um endereço de memória nada mais é do que um número! Pense nele com o índice exato de uma "gaveta" no grande array que é a memória do seu computador.</p><p><img class="image-box" src="/vp_developer_blog/images/address.png" alt="memory address"></img></p><ul><li><b>Apenas um número:</b> Apesar de não parecer uma "casa", o endereço é um identificador numérico único para cada byte.</li><li><b>Hexadecimal (Base 16):</b> Usamos formatos como <code>0xfff8</code> porque é o padrão da computação, mas ele representa um valor real (neste caso, 65.528).</li><li><b>Legibilidade:</b> O hexadecimal ajuda a organizar endereços grandes de uma forma que faz mais sentido para o hardware e compiladores.</li></ul><pre data-language="C"><code class="language-c">#include &lt;stdio.h&gt;
+}</code></pre><h3>O que é endereço?</h3><p>Um endereço de memória nada mais é do que um número! Pense nele com o índice exato de uma "gaveta" no grande array que é a memória do seu computador.</p><p><img class="image-box" src="/vp/images/address.png" alt="memory address"></img></p><ul><li><b>Apenas um número:</b> Apesar de não parecer uma "casa", o endereço é um identificador numérico único para cada byte.</li><li><b>Hexadecimal (Base 16):</b> Usamos formatos como <code>0xfff8</code> porque é o padrão da computação, mas ele representa um valor real (neste caso, 65.528).</li><li><b>Legibilidade:</b> O hexadecimal ajuda a organizar endereços grandes de uma forma que faz mais sentido para o hardware e compiladores.</li></ul><pre data-language="C"><code class="language-c">#include &lt;stdio.h&gt;
 int main() {
 	int value = 100;
 	// %p exibe o número em hexadecimal (ex: 0x7ffd...)
@@ -64,7 +64,7 @@ int main() {
 	// Podemos ver o mesmo número "cru" em decimal
 	printf("Enderecço (Decimal): %lu\n", ( unsigned long)&amp;value);
 	return 0;
-}</code></pre><h2>Memória Virtual</h2><ul><li><b>Camada de Abstração:</b> Seu programa não acessa os pentes de RAM físico diretamente. O Sistema Opereacional (OS, <i>OPERATING SYSTEM</i>) cria a <i>Memória Virtual</i>, fazendo o programa acreditar que tem acesso exclusivo a um bloco contínuo de memória.</li></ul><p><img class="image-box" src="/vp_developer_blog/images/virtual-memory.png" alt="memory virtual"></img></p><ul><li><b>Segurança e Isolamento:</b> Essa técnica impede que um processo acesse ou corrompa os dados de outro programa, garantindo estabilidade ao sistema.</li><li><b>Simplicidade e Performance:</b> O desenvolvedor não precisa gerenciar o hardware físico, e o OS pode otimizar o uso da RAM movendo dados para o disco se necessário.</li><li><b>Sistemas Embarcados:</b> A única grande exceção é quando você programa firmware para dispositivos simploes sem OS; neles, o acesso à memória física costuma ser direto.</li></ul><p>No fim, para o seu código C, a memória virtual continua sendo aquele grande "array de bytes" onde cada posição tem um endereço número.</p><h3>Pointers</h3><ul><li><b>O Que é:</b> Um ponteiro é apneas uma variável que armazena um <i>memory address</i>.</li><li><b>Por que o nome?</b> Ele é chamado assim porque "aponta" para o local onde o dado real está guardado.</li><li><b>Sintaxe de Declaração:</b> Usamos um asterisco (*) após o tipo de declaração para indicar que é um ponteiro (ex. <code>int *</code>).</li><li><b>Atribuição:</b> Usamos o operador <code>&</code> (address-of) para pegar o endereço de uma variável comum e salvá-lo no ponteiro.</li></ul><pre data-language="C"><code class="language-c">int age = 37;
+}</code></pre><h2>Memória Virtual</h2><ul><li><b>Camada de Abstração:</b> Seu programa não acessa os pentes de RAM físico diretamente. O Sistema Opereacional (OS, <i>OPERATING SYSTEM</i>) cria a <i>Memória Virtual</i>, fazendo o programa acreditar que tem acesso exclusivo a um bloco contínuo de memória.</li></ul><p><img class="image-box" src="/vp/images/virtual-memory.png" alt="memory virtual"></img></p><ul><li><b>Segurança e Isolamento:</b> Essa técnica impede que um processo acesse ou corrompa os dados de outro programa, garantindo estabilidade ao sistema.</li><li><b>Simplicidade e Performance:</b> O desenvolvedor não precisa gerenciar o hardware físico, e o OS pode otimizar o uso da RAM movendo dados para o disco se necessário.</li><li><b>Sistemas Embarcados:</b> A única grande exceção é quando você programa firmware para dispositivos simploes sem OS; neles, o acesso à memória física costuma ser direto.</li></ul><p>No fim, para o seu código C, a memória virtual continua sendo aquele grande "array de bytes" onde cada posição tem um endereço número.</p><h3>Pointers</h3><ul><li><b>O Que é:</b> Um ponteiro é apneas uma variável que armazena um <i>memory address</i>.</li><li><b>Por que o nome?</b> Ele é chamado assim porque "aponta" para o local onde o dado real está guardado.</li><li><b>Sintaxe de Declaração:</b> Usamos um asterisco (*) após o tipo de declaração para indicar que é um ponteiro (ex. <code>int *</code>).</li><li><b>Atribuição:</b> Usamos o operador <code>&</code> (address-of) para pegar o endereço de uma variável comum e salvá-lo no ponteiro.</li></ul><pre data-language="C"><code class="language-c">int age = 37;
 int *pointer_to_age = &amp;age; // O ponteiro agora guardad o endereço de 'idade'</code></pre><ul><li><b>Modificação Direta:</b> Por padrão, o C copia dos dados ao passá-los para uma função (passagem por valor). Se você alterar a cópia dentro da função a variável original permanece igual. Com ponteiros, você passa o endereço e altera o dado original</li><li><b>Eficiência:</b> Imagine uma <code>struct</code> com milhares de campos. Copiar tudo isso para cada função consumiriar muita memória e tempo. Passar apenas o endereço (pointer) é extremamente rápido e leve.</li></ul><p>Em resumo, ponteiros dão às suas funções o "endereço da casa" em vez de uma "cópia da casa".</p><h3>Pointer Basics</h3><p>Os ponteiros funcionam como endereços residencias; eles não são o dado em si, mas indicam exatamente onde a inforrmação está guardada na memória. Para começar, você declara um ponteiro usando o simbolo de asterisco após o tipo e utiliza o operador <code>&</code> para capturar o endereço de uma variável específica.</p><p>A grande novidade aqui é a desreferenciação, que usa o mesmo asterisco para "entrar"no endereço e acessar ou modificar o valor real ali armazenado.</p><p>É essencial não confundir o uso do asterisco na declaração do tipo com o seu uso na manipulação dos dados, pois essa técnica permite que você altere o conteúdo original de uma variável diretamente, sem precisar criar cópias desnecessárias, o que torna o seu código muito mais eficiente e poderoso</p><pre data-language="C"><code class="language-c">#include &lt;stdio.h&gt;
 int main() {
 	int numero = 10;
@@ -91,9 +91,9 @@ int main() {
 	prtinf("X atualziado: %d\n", p1.x);
 	return 0;
 }</code></pre></div>
-            <script src="/vp_developer_blog/prism.js"></script>
+            <script src="/vp/prism.js"></script>
             <footer class="footer final">2026 Vitor Pontual - Powered by
-                <a href="/vp_developer_blog/">VP Blog Builder</a>
+                <a href="/vp/">VP Blog Builder</a>
             </footer>
     </div>
 
