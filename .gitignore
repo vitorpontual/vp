@@ -3,6 +3,7 @@ __pycache__/
 static/
 content/
 src/
+test/
 *.sh
 
 template.md
