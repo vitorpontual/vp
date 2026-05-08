@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Enums em C</title>
+        <link href="/s.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link href="/prism.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
+
+    </head>
+    <body>
+        <div id="layout">
+      <div class="header">
+        <h1>
+          <a href="/index.html">VP Developer</a>
+        </h1>
+      </div>
+
+
+      <div class="content">
+        <nav class="pure-g">
+          <div class="pure-u-2-3 links">
+            <a href="/index.html">Home</a> ·
+            <a href="/archive.html">Archive</a> · 
+            <a href="/about.html">About</a>
+          </div>
+
+          <div class="pure-u-1-3">
+            <div class="contact">
+              <span>
+                <a href="https://github.com/vitorpontual" download="">
+                  <img class="i" src="/icons/github.svg" alt="Github icon">
+                  </a>
+              </span>
+              <span>
+                <a href="https://www.linkedin.com/in/vitor-pontual/">
+                <img class="i" src="/icons/linkedin.svg" alt="LinkedIn icon">
+                </a>
+              </span>
+            </div>
+          </div>
+        </nav>
+            <div><h1>Enums em C</h1><div class="posted-date">
+    <div class="posted-date-block">
+        <time datetime="Posted 2026-05-08">
+           <i> Posted 2026-05-08</i>
+        </time>
+    </div>
+    </div><p><div> <span style="display: none"> published: 2026-05-08 </span> </div></p><p>Ao contrário do <i>Golang</i> (uma linguagem que ainda vive nos anos 70), o C tem suporte explícito para <code>enums</code>.</p><blockquote>TJ está irritado porque Go é uma linguagem simples e moderna que empresas de verdade usam pra lançar produtos. Nem toda linguagem de programação pode ser um experimento acadêmico como OCaml.</blockquote><p>Você pode definir um novo tipo <code>enum</code> assim:</p><pre data-language="C"><code class="language-c">typedef enum DaysOfWeek {
+    Monday,
+    TACO_TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY,
+    FUNDAY,
+} days_of_week_t;</code></pre><p>O typedef e seu apelido <code>days_of_week_t</code> são opcionais, mas assim com structs, eles facilitam o uso do enum.</p><p>No exemplo acima, <code>days_of_week_t</code> é um novo tipo que só pode ter um dos valores definidos no <code>enum</code>:</p><ul><li><code>MONDAY</code> -> 0</li><li><code>TACO_TUESDAY</code> -> 1</li><li><code>WEDNESDAY</code> -> 2</li><li><code>THURSDAY</code> -> 3</li><li><code>FRIDAY</code> -> 4</li><li><code>SATURDAY</code> -> 5</li><li><code>FUNDAY</code> -> 6</li></ul><pre data-language="C"><code class="language-c">typedef struct Event {
+    char *title;
+    enum DaysOfWeek day;
+} event_t;</code></pre><p>Um <code>enum</code> <b>não é um tipo de coleção</b> como uma struct ou um array. É apenas uma lista de inteiros vinculaods a um novo tipo, onde cada um recebe nome explícito.</p><p></p></div>
+            <script src="/prism.js"></script>
+            <footer class="footer final">2026 Vitor Pontual - Powered by
+                <a href="/">VP Blog Builder</a>
+            </footer>
+    </div>
+
+
+    </body>
+</html>
